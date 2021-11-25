@@ -1,0 +1,15 @@
+.card {
+  border: 1px solid grey;
+  border-radius: 10px;
+  padding: 10px;
+  list-style: none;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.card > img {
+  height: 200px;
+  object-fit: cover;
+}
