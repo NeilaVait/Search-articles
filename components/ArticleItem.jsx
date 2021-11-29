@@ -1,17 +1,16 @@
 import style from '../styles/ArticleItem.module.css';
-import { useState } from 'react';
 import { addClickedArticleDetails } from '../utils/requests';
 
 function ArticleItem({ article }) {
-  const [articleDetails, setArticleDetails] = useState({});
+  const handleClickedArticleDetails = async (article) => {
+    const dataToSend = {
+      publishedAt: article.publishedAt,
+      title: article.title,
+      description: article.description,
+    };
 
-  const propsToState = (article) => {
-    setArticleDetails(article);
-    handleClickedArticleDetails(articleDetails);
-  };
-
-  const handleClickedArticleDetails = async (details) => {
-    await addClickedArticleDetails(details);
+    console.log('dataToSend', dataToSend);
+    await addClickedArticleDetails(dataToSend);
   };
 
   const truncateDescription = (description, length) => {
@@ -23,7 +22,7 @@ function ArticleItem({ article }) {
   };
 
   const openArticle = (url) => {
-    propsToState(article);
+    handleClickedArticleDetails(article);
     const newWindow = window.open(url, '_blank', 'noopener,noreferrer');
     if (newWindow) newWindow.opener = null;
   };
