@@ -5,8 +5,9 @@ import { addClickedArticleDetails } from '../utils/requests';
 function ArticleItem({ article }) {
   const [articleDetails, setArticleDetails] = useState({});
 
-  const propsToState = ({ publishedAt, title, description }) => {
-    setArticleDetails({ publishedAt: publishedAt.slice(0, 10), title, description });
+  const propsToState = (article) => {
+    setArticleDetails(article);
+    handleClickedArticleDetails(articleDetails);
   };
 
   const handleClickedArticleDetails = async (details) => {
@@ -23,7 +24,6 @@ function ArticleItem({ article }) {
 
   const openArticle = (url) => {
     propsToState(article);
-    handleClickedArticleDetails(articleDetails);
     const newWindow = window.open(url, '_blank', 'noopener,noreferrer');
     if (newWindow) newWindow.opener = null;
   };

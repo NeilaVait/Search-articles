@@ -12,6 +12,7 @@ export const addNewKeywords = async (dataToSend) => {
 
 export const addClickedArticleDetails = async (dataToSend) => {
   try {
+    console.log('dataToSend', dataToSend);
     const ats = await axios.post('http://localhost:4000/api/articleDetails/new', dataToSend);
     return ats.data;
   } catch (err) {
