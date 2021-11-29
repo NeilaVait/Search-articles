@@ -1,14 +1,17 @@
 import style from '../styles/ArticleItem.module.css';
 import { useState } from 'react';
+import { addClickedArticleDetails } from '../utils/requests';
 
 function ArticleItem({ article }) {
-  const [atrticleDetails, setAtrticleDetails] = useState({});
+  const [articleDetails, setArticleDetails] = useState({});
 
   const propsToState = ({ publishedAt, title, description }) => {
-    setAtrticleDetails({ publishedAt, title, description });
+    setArticleDetails({ publishedAt: publishedAt.slice(0, 10), title, description });
+    console.log('articleDetails', articleDetails);
   };
 
   const handleClickedArticleDetails = async (details) => {
+    console.log('details', details);
     const success = await addClickedArticleDetails(details);
     console.log('success', success);
   };
@@ -22,6 +25,8 @@ function ArticleItem({ article }) {
   };
 
   const openArticle = (url) => {
+    propsToState(article);
+    handleClickedArticleDetails(articleDetails);
     const newWindow = window.open(url, '_blank', 'noopener,noreferrer');
     if (newWindow) newWindow.opener = null;
   };
