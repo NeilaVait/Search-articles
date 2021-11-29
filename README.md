@@ -8,7 +8,6 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with
 
 - clone repository
 - npm install
-- .env.sample to .env and insert your mongoDB string
 - npm run dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result and search articles.
