@@ -9,7 +9,6 @@ function ArticleItem({ article }) {
       description: article.description,
     };
 
-    console.log('dataToSend', dataToSend);
     await addClickedArticleDetails(dataToSend);
   };
 
