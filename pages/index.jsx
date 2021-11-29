@@ -19,7 +19,12 @@ export default function Home() {
       return;
     }
     getArticlesByInputValue(inputValue);
-    addNewKeywords(inputValue);
+    handleCreateNewKeywords(inputValue);
+  };
+
+  const handleCreateNewKeywords = async (dataToSend) => {
+    const success = await addNewKeywords({ keywords: dataToSend });
+    console.log('success', success);
   };
 
   const clearArticles = () => {
