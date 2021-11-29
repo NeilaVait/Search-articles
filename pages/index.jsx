@@ -23,8 +23,7 @@ export default function Home() {
   };
 
   const handleCreateNewKeywords = async (dataToSend) => {
-    const success = await addNewKeywords({ keywords: dataToSend });
-    console.log('success', success);
+    await addNewKeywords({ keywords: dataToSend });
   };
 
   const clearArticles = () => {
@@ -35,7 +34,6 @@ export default function Home() {
   const getArticlesByInputValue = (value) => {
     axios(`https://gnews.io/api/v4/search?q=${value}&token=4ea0908208ea082c0ad7ce597db26e00`)
       .then((response) => {
-        console.log(response.data.articles);
         setArticles(response.data.articles);
         setFilteredArticles(response.data.articles.slice(0, 9));
       })

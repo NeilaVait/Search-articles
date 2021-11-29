@@ -7,13 +7,10 @@ function ArticleItem({ article }) {
 
   const propsToState = ({ publishedAt, title, description }) => {
     setArticleDetails({ publishedAt: publishedAt.slice(0, 10), title, description });
-    console.log('articleDetails', articleDetails);
   };
 
   const handleClickedArticleDetails = async (details) => {
-    console.log('details', details);
-    const success = await addClickedArticleDetails(details);
-    console.log('success', success);
+    await addClickedArticleDetails(details);
   };
 
   const truncateDescription = (description, length) => {
