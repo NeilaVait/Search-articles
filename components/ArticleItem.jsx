@@ -1,6 +1,18 @@
 import style from '../styles/ArticleItem.module.css';
+import { useState } from 'react';
 
 function ArticleItem({ article }) {
+  const [atrticleDetails, setAtrticleDetails] = useState({});
+
+  const propsToState = ({ publishedAt, title, description }) => {
+    setAtrticleDetails({ publishedAt, title, description });
+  };
+
+  const handleClickedArticleDetails = async (details) => {
+    const success = await addClickedArticleDetails(details);
+    console.log('success', success);
+  };
+
   const truncateDescription = (description, length) => {
     if (description.length > length) {
       return description.slice(0, length) + '...';
