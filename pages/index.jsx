@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import style from '../styles/Home.module.css';
 import axios from 'axios';
 import ArticleList from '../components/ArticleList';
+import { addNewKeywords } from './../utils/requests';
 
 export default function Home() {
   const [inputValue, setInputValue] = useState('');
@@ -18,6 +19,7 @@ export default function Home() {
       return;
     }
     getArticlesByInputValue(inputValue);
+    addNewKeywords(inputValue);
   };
 
   const clearArticles = () => {
