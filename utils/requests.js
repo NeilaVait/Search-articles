@@ -4,7 +4,7 @@ export const addNewKeywords = async (dataToSend) => {
   try {
     const ats = await axios.post('http://localhost:4000/api/keywords/new', dataToSend);
     console.log(ats);
-    return ats.data.success ? true : ats.data;
+    return ats.data;
   } catch (err) {
     console.log(err);
     return err;
